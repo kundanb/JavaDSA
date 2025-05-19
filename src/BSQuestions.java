@@ -1,5 +1,3 @@
-import java.util.Arrays;
-
 public class BSQuestions {
 
     static int ceilingOfNumber(int[] arr, int target) {
@@ -62,11 +60,10 @@ public class BSQuestions {
         while (start <= end) {
             int mid = start + (end - start) / 2;
 
-            if (target < arr[mid]) {
+            if (target < arr[mid])
                 end = mid - 1;
-            } else {
+            else
                 start = mid + 1;
-            }
         }
 
         return arr[start % arr.length];
@@ -84,11 +81,10 @@ public class BSQuestions {
             if (arr[mid] == target) {
                 leftIndex = mid;
                 end = mid - 1;
-            } else if (target < arr[mid]) {
+            } else if (target < arr[mid])
                 end = mid - 1;
-            } else {
+            else
                 start = mid + 1;
-            }
         }
 
         if (leftIndex == -1)
@@ -105,14 +101,57 @@ public class BSQuestions {
             if (arr[mid] == target) {
                 rightIndex = mid;
                 start = mid + 1;
-            } else if (target < arr[mid]) {
+            } else if (target < arr[mid])
                 end = mid - 1;
-            } else {
+            else
                 start = mid + 1;
-            }
         }
 
         return new int[]{ leftIndex, rightIndex };
+    }
+
+    static int infiniteArray(int[] arr, int target) {
+        int start = 0;
+        int end = 1;
+
+        while (target > arr[end]) {
+            int diff = end - start + 1;
+            start = end + 1;
+            end = start + 2 * diff;
+        }
+
+        while (start <= end) {
+            int mid = start + (end - start) / 2;
+
+            if (arr[mid] == target)
+                return mid;
+
+            if (target < arr[mid])
+                end = mid - 1;
+            else
+                start = mid + 1;
+        }
+
+        return -1;
+    }
+
+    static int peakOfMountainOrBitonicArray(int[] arr) {
+        if (arr.length < 3)
+            return -1;
+
+        int start = 0;
+        int end = arr.length - 1;
+
+        while (start < end) {
+            int mid = start + (end - start) / 2;
+
+            if (arr[mid + 1] > arr[mid])
+                start = mid + 1;
+            else
+                end = mid;
+        }
+
+        return start;
     }
 
 }

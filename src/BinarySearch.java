@@ -38,7 +38,7 @@ public class BinarySearch {
         int start = 0;
         int end = arr.length - 1;
 
-        boolean isAsc = arr[arr.length - 1] >= arr[0];
+        boolean isAsc = arr[start] <= arr[end];
 
         while (start <= end) {
             int mid = start + (end - start) / 2;

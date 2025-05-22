@@ -51,25 +51,22 @@ public class PrimeNum {
     }
 
     static void sieveOfEratosthenes(int max) {
-        int[] primes = new int[max + 1];
+        byte[] primes = new byte[max + 1];
 
-        for (int i = 2; i <= max; i++) {
+        primes[0] = 0;
+        primes[1] = 1;
+
+        for (int i = 2; i <= max; i++)
             primes[i] = 1;
-        }
 
-        for (int i = 2; i * i <= max; i++) {
-            if (primes[i] == 1) {
-                for (int j = i * i; j <= max; j += i) {
+        for (int i = 2; i * i <= max; i++)
+            if (primes[i] == 1)
+                for (int j = i * i; j <= max; j += i)
                     primes[j] = 0;
-                }
-            }
-        }
 
-        for (int i = 0; i < primes.length; i++) {
-            if (primes[i] == 1) {
+        for (int i = 0; i < primes.length; i++)
+            if (primes[i] == 1)
                 System.out.println(i);
-            }
-        }
     }
 
 }

@@ -1,4 +1,4 @@
-public class BinarySearch {
+public class BS {
 
     static int usingLoop(int[] arr, int target) {
         int start = 0;
